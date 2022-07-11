@@ -1,0 +1,9 @@
+node_modules/**
+android/**
+ios/**
+__tests__/**
+
+babel.config.js
+.eslintrc.js
+metro.config.js
+declarations.d.ts
