@@ -1,21 +1,36 @@
 import React, { FunctionComponent } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { HomePageProps } from './types';
 import styles from './styles';
-import { useGetHomeContentsQuery } from '@services/hooks/home';
-import { Spinner } from 'native-base';
-import { colors } from '@themes';
-// import { useAppSelector } from '../../hooks/reduxHooks';
+import { DeleteIcon, EditPencilIcon, HamburgerIcon, ListIcon, PolygonIcon } from '@assets/icons';
+import { KvLogo } from '@assets/images';
+import { Header, DropDown, EmployeeCard } from '@components';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
 
+  
   return (
-    
-      <View>
-        <Text>hello world!!!</Text>
+    <>
+      <View style={styles.container}>
+        <Header />
+
+        <View style={styles.listTitle}>
+          <Text style={styles.listHeadText}>Employee List</Text>
+          <DropDown
+            Icon={ListIcon}
+            text="Status"
+            values={['probation', 'active', 'inactive']}
+          />
+        </View>
+
+        <View style={styles.profileHead}>
+          <Text style={styles.nameTitleStyle}>Employee Name</Text>
+          <Text style={styles.statusTitleStyle}>Status</Text>
+        </View>
+
+        <EmployeeCard employeeName="Vishal M" status="Probation"  />
       </View>
-
-
+    </>
   );
 };
 
