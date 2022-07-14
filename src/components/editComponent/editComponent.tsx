@@ -1,22 +1,34 @@
 import React, { FunctionComponent } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import { EditPencilIcon, DeleteIcon } from '@assets/icons';
+import { EditPencilIcon, DeleteIcon, EditIcon } from '@assets/icons';
 import { EditComponentParams } from './types';
+import { Menu } from 'react-native-paper';
 
 const EditComponent: FunctionComponent<EditComponentParams> = (
   props: EditComponentParams
 ) => {
-  const { listMenu } = props;
+  const { listMenu, visible, hideMenu, editMenu } = props;
+
   return (
-    <View style={styles.editBoxStyle}>
-      {listMenu.map(listItem => (
-        <TouchableOpacity onPress={listItem.onPress} style={styles.editStyle}>
-          <listItem.icon style={styles.pencilIconStyle} />
-          <Text style={styles.textStyle}>{listItem.name}</Text>
+    <Menu
+      visible={visible}
+      onDismiss={hideMenu}
+      anchor={
+        <TouchableOpacity
+          onPress={editMenu}
+          hitSlop={{ right: 10, left: 10, top: 10, bottom: 10 }}>
+          <EditIcon style={styles.editIconStyle} />
         </TouchableOpacity>
-      ))}
-    </View>
+      }
+      contentStyle={styles.editBoxStyle}>
+      {listMenu.map(listItem => (
+      <TouchableOpacity onPress={listItem.onPress} style={styles.editStyle}>
+        <listItem.icon style={styles.pencilIconStyle} />
+        <Text style={styles.textStyle}>{listItem.name}</Text>
+      </TouchableOpacity>
+    ))}
+    </Menu>
   );
 };
 

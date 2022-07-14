@@ -30,11 +30,10 @@ const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
     setVisible(!visible);
   };
 
-  const renderEditMenu = () => {
-    if (visible) {
-      return <EditComponent listMenu={listOfObjects} />;
-    }
+  const hideMenu = () => {
+    setVisible(false);
   };
+
 
   return (
     <TouchableOpacity style={styles.cardStyle}>
@@ -42,12 +41,12 @@ const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
         <Text>{employeeName}</Text>
       </View>
       <StatusIndicator statusName={status} />
-      <TouchableOpacity
-        onPress={editMenu}
-        hitSlop={{ right: 10, left: 10, top: 10, bottom: 10 }}>
-        <EditIcon style={styles.editIconStyle} />
-      </TouchableOpacity>
-      {renderEditMenu()}
+      <EditComponent
+          listMenu={listOfObjects}
+          visible={visible}
+          hideMenu={hideMenu}
+          editMenu = {editMenu}
+        />
     </TouchableOpacity>
   );
 };

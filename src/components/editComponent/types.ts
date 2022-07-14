@@ -8,4 +8,7 @@ listMenu: Array<{
     icon: any;
     onPress: any;
   }>;
+  visible: boolean;
+  hideMenu: () => void; 
+  editMenu: () => void;
 }

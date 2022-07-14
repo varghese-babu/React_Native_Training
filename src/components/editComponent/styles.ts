@@ -2,23 +2,17 @@ import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
   editBoxStyle: {
-    position: 'absolute',
-    right: '0@s',
     flexDirection: 'column',
-    top: '30@s',
-    zIndex: 2,
-    elevation: 2,
-    marginRight: '20@s',
+    top: '16@s',
     width: '80@s',
-    backgroundColor: '#ffffff',
-
+    backgroundColor: '#ffffff'
   },
 
   editStyle: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: '2@s',
-    paddingBottom: '6@s',
+    paddingBottom: '6@s'
   },
 
   deleteStyle: {
@@ -35,6 +29,9 @@ const styles = ScaledSheet.create({
 
   textStyle: {
     marginLeft: '8@s'
+  },
+  editIconStyle: {
+    paddingRight: '2@s'
   }
 });
 
