@@ -5,7 +5,7 @@ import PolygonIcon from './polygon.svg';
 import EditIcon from './edit.svg';
 import EditPencilIcon from './editPencil.svg';
 import DeleteIcon from './delete.svg';
-import FloatingIcon from './floating.svg';
+import UploadIcon from './upload.svg';
 
 export {
   SampleIcon,
@@ -15,5 +15,5 @@ export {
   EditIcon,
   EditPencilIcon,
   DeleteIcon,
-  FloatingIcon
+  UploadIcon
 };

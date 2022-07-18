@@ -47,7 +47,15 @@ const styles = ScaledSheet.create({
     fontWeight: '400',
     fontSize: 16,
     lineHeight: 22
-  }
+  },
+
+
+  floatStyle: {
+   bottom: 10,
+   position: 'absolute',
+   right: 10,
+
+  },
 });
 
 export default styles;
