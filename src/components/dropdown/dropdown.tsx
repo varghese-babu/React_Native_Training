@@ -6,7 +6,7 @@ import { DropDownParams } from './types';
 import { useState } from 'react';
 
 const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
-  const { Icon, text, values } = props;
+  const { Icon, text, DropIcon, values, style, updateValue } = props;
 
   const [visible, setVisible] = useState(false);
 
@@ -14,14 +14,21 @@ const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
     setVisible(!visible);
   };
 
+  const updateFunction = (statusValue: string) => {
+    setVisible(false);
+    updateValue(statusValue);
+  };
+
   const renderDropdown = () => {
     if (visible) {
       return (
-        <View style={styles.statusView}>
+        <View style={Icon ? styles.statusView : styles.statusAndRole}>
           {values.map(statusValue => (
-            <View style={styles.statusText}>
+            <TouchableOpacity
+              style={styles.statusText}
+              onPress={() => updateFunction(statusValue)}>
               <Text>{statusValue}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       );
@@ -29,18 +36,30 @@ const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
   };
 
   return (
-    <View>
+    <View style={styles.viewStyle}>
       <TouchableOpacity onPress={toggleDropdown} style={styles.buttonTouch}>
         <View style={styles.buttonStyle}>
-          <View style={styles.marginStyle}>
-            <Icon></Icon>
-          </View>
-          <View style={styles.marginStyle}>
-            <Text>{text}</Text>
-          </View>
-          <View style={styles.marginStyle}>
-            <PolygonIcon></PolygonIcon>
-          </View>
+          {Icon ? (
+            <>
+              <View style={styles.marginStyle}>
+                <Icon />
+              </View>
+              <View style={styles.marginStyle}>
+                <Text style={style}>{text}</Text>
+              </View>
+
+              <View style={styles.marginStyle}>
+                <DropIcon />
+              </View>
+            </>
+          ) : (
+            <>
+              <View style={styles.statusDropDownStyle}>
+                <Text>{text}</Text>
+                <DropIcon />
+              </View>
+            </>
+          )}
         </View>
       </TouchableOpacity>
       {renderDropdown()}

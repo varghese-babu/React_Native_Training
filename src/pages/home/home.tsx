@@ -1,10 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { HomePageProps } from './types';
 import styles from './styles';
 import {
-  DeleteIcon,
-  EditPencilIcon,
   UploadIcon,
   HamburgerIcon,
   ListIcon,
@@ -14,10 +12,12 @@ import { KvLogo } from '@assets/images';
 import { Header, DropDown, EmployeeCard } from '@components';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
+
+  const [status, onChangeStatus] = useState<string | null>(null);
   return (
     <>
       <View style={styles.container}>
-        <Header />
+        <Header Icon={HamburgerIcon} titleImage={KvLogo} />
 
         <View style={styles.listTitle}>
           <Text style={styles.listHeadText}>Employee List</Text>
@@ -25,6 +25,8 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
             Icon={ListIcon}
             text="Status"
             values={['probation', 'active', 'inactive']}
+            DropIcon={PolygonIcon}
+            updateValue = {onChangeStatus}
           />
         </View>
 
