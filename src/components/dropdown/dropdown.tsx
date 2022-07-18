@@ -15,11 +15,9 @@ const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
   };
 
   const updateFunction = (statusValue: string) => {
-
     setVisible(false);
     updateValue(statusValue);
-    
-  }
+  };
 
   const renderDropdown = () => {
     if (visible) {
