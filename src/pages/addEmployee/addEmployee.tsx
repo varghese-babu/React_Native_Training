@@ -1,6 +1,4 @@
-import { Button, DropDown, Header } from '@components';
 import React, { FunctionComponent, useState } from 'react';
-import moment from 'moment';
 import {
   View,
   Text,
@@ -9,9 +7,10 @@ import {
   ScrollView,
   SafeAreaView
 } from 'react-native';
+
+import { Button, DropDown, Header } from '@components';
 import { UploadIcon, BackIcon, DropDownIcon } from '@assets/icons';
 import styles from './styles';
-import { add } from 'lodash';
 
 const AddEmployeePage: FunctionComponent = () => {
   const [name, onChangeName] = useState<string | null>(null);
