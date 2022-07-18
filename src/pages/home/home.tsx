@@ -10,9 +10,9 @@ import {
 } from '@assets/icons';
 import { KvLogo } from '@assets/images';
 import { Header, DropDown, EmployeeCard } from '@components';
+import Svg from 'react-native-svg';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
-
   const [status, onChangeStatus] = useState<string | null>(null);
   return (
     <>
@@ -26,7 +26,7 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
             text="Status"
             values={['probation', 'active', 'inactive']}
             DropIcon={PolygonIcon}
-            updateValue = {onChangeStatus}
+            updateValue={onChangeStatus}
           />
         </View>
 
@@ -37,7 +37,7 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
 
         <EmployeeCard employeeName="Vishal M" status="Probation" />
         <TouchableOpacity style={styles.floatStyle}>
-          <UploadIcon />
+          <Text style={styles.floatTextStyle}>+</Text>
         </TouchableOpacity>
       </View>
     </>
