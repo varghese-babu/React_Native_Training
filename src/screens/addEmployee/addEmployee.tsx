@@ -1,6 +1,8 @@
-import AddEmployeePage from '@pages/addEmployee/addEmployee';
 import React, { FunctionComponent } from 'react';
+
 import { AddEmployeeScreenProps } from './types';
+
+import AddEmployeePage from '@pages/addEmployee/addEmployee';
 
 const AddEmployeeScreen: FunctionComponent = (
   props: AddEmployeeScreenProps
