@@ -36,7 +36,7 @@ const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
   };
 
   return (
-    <View style={styles.viewStyle}>
+    <View>
       <TouchableOpacity onPress={toggleDropdown} style={styles.buttonTouch}>
         <View style={styles.buttonStyle}>
           {Icon ? (
