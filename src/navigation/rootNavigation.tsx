@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { HomeScreen } from '@screens';
+import { AddEmployeeScreen, HomeScreen } from '@screens';
 import { ScreenNames } from './screenNames';
 import {
   isReadyRef,
@@ -21,7 +21,7 @@ const RootNavigation: FunctionComponent = () => (
       isReadyRef.current = true;
     }}>
     <Navigator
-      initialRouteName={ScreenNames.Home}
+      initialRouteName={ScreenNames.AddEmployee}
       screenOptions={{
         headerTitle: '',
         ...(Platform.OS === osPlatforms.IOS && {
@@ -34,6 +34,7 @@ const RootNavigation: FunctionComponent = () => (
         headerLeft: null
       }}>
       <Screen name={ScreenNames.Home} component={HomeScreen} />
+      <Screen name={ScreenNames.AddEmployee} component={AddEmployeeScreen} />
     </Navigator>
   </NavigationContainer>
 );

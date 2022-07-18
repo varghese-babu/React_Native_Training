@@ -1,3 +1,4 @@
 export enum ScreenNames {
-  Home = 'HomeScreen'
+  Home = 'HomeScreen',
+  AddEmployee = 'AddEmployeeScreen'
 }

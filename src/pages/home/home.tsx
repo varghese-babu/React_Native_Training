@@ -2,17 +2,21 @@ import React, { FunctionComponent } from 'react';
 import { Text, View, Image } from 'react-native';
 import { HomePageProps } from './types';
 import styles from './styles';
-import { DeleteIcon, EditPencilIcon, HamburgerIcon, ListIcon, PolygonIcon } from '@assets/icons';
+import {
+  DeleteIcon,
+  EditPencilIcon,
+  HamburgerIcon,
+  ListIcon,
+  PolygonIcon
+} from '@assets/icons';
 import { KvLogo } from '@assets/images';
 import { Header, DropDown, EmployeeCard } from '@components';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
-
-  
   return (
     <>
       <View style={styles.container}>
-        <Header />
+        <Header Icon={HamburgerIcon} titleImage={KvLogo} />
 
         <View style={styles.listTitle}>
           <Text style={styles.listHeadText}>Employee List</Text>
@@ -20,6 +24,7 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
             Icon={ListIcon}
             text="Status"
             values={['probation', 'active', 'inactive']}
+            DropIcon={PolygonIcon}
           />
         </View>
 
@@ -28,7 +33,7 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <Text style={styles.statusTitleStyle}>Status</Text>
         </View>
 
-        <EmployeeCard employeeName="Vishal M" status="Probation"  />
+        <EmployeeCard employeeName="Vishal M" status="Probation" />
       </View>
     </>
   );
