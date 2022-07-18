@@ -5,7 +5,7 @@ import PolygonIcon from './polygon.svg';
 import EditIcon from './edit.svg';
 import EditPencilIcon from './editPencil.svg';
 import DeleteIcon from './delete.svg';
-import VectorIcon from './vector.svg';
+import BackIcon from './back.svg';
 import UploadIcon from './upload.svg';
 import DropDownIcon from './dropDown.svg';
 
@@ -17,7 +17,7 @@ export {
   EditIcon,
   EditPencilIcon,
   DeleteIcon,
-  VectorIcon,
+  BackIcon,
   UploadIcon,
   DropDownIcon
 };

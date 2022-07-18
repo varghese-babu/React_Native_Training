@@ -9,7 +9,7 @@ import {
   ScrollView,
   SafeAreaView
 } from 'react-native';
-import { UploadIcon, VectorIcon, DropDownIcon } from '@assets/icons';
+import { UploadIcon, BackIcon, DropDownIcon } from '@assets/icons';
 import styles from './styles';
 import { add } from 'lodash';
 
@@ -32,7 +32,7 @@ const AddEmployeePage: FunctionComponent = () => {
 
   return (
     <SafeAreaView style={styles.pageStyle}>
-      <Header Icon={VectorIcon} titleText="Add Employee" />
+      <Header Icon={BackIcon} titleText="Add Employee" />
 
       <ScrollView style={styles.scrollViewStyle}>
         <View>
