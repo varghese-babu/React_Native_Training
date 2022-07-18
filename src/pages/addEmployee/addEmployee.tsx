@@ -21,14 +21,6 @@ const AddEmployeePage: FunctionComponent = () => {
   const [status, onChangeStatus] = useState<string | null>(null);
   const [role, onChangeRole] = useState<string | null>(null);
 
-  console.log('Name: ', name);
-  console.log('Id: ', id);
-  console.log('Date: ', dateValue);
-  console.log('Experience: ', experience);
-  console.log('Address: ', address);
-  console.log('Status: ', status);
-  console.log('Role: ', role);
-
   return (
     <SafeAreaView style={styles.pageStyle}>
       <Header Icon={BackIcon} titleText="Add Employee" />
