@@ -21,7 +21,7 @@ const RootNavigation: FunctionComponent = () => (
       isReadyRef.current = true;
     }}>
     <Navigator
-      initialRouteName={ScreenNames.AddEmployee}
+      initialRouteName={ScreenNames.Home}
       screenOptions={{
         headerTitle: '',
         ...(Platform.OS === osPlatforms.IOS && {

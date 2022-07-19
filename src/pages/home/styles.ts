@@ -49,13 +49,22 @@ const styles = ScaledSheet.create({
     lineHeight: 22
   },
 
-
   floatStyle: {
-   bottom: 10,
-   position: 'absolute',
-   right: 10,
-
+    alignItems: 'center',
+    backgroundColor: '#03aeee',
+    borderRadius: 100,
+    bottom: 10,
+    height: '50@s',
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 10,
+    width: '50@s'
   },
+
+  floatTextStyle: {
+    color: '#ffffff',
+    fontSize: '20@s'
+  }
 });
 
 export default styles;
