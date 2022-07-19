@@ -2,13 +2,13 @@ import { api } from '../api/api';
 
 export const homeApi = api.injectEndpoints({
   endpoints: builder => ({
-    getHomeContents: builder.query({
+    getHomeContents: builder.query<any, void>({
       query: () => ({
-        url: 'posts',
+        url: '/employees',
         method: 'GET'
       })
-    })
+    }),
   })
 });
 
-export const { useGetHomeContentsQuery } = homeApi;
+export const  { useGetHomeContentsQuery } = homeApi;

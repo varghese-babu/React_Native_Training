@@ -53,11 +53,11 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     backgroundColor: '#03aeee',
     borderRadius: 100,
-    bottom: 10,
+    bottom: 32,
     height: '50@s',
     justifyContent: 'center',
     position: 'absolute',
-    right: 10,
+    right: 32,
     width: '50@s'
   },
 

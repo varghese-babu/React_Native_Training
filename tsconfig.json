@@ -66,6 +66,6 @@
   ],
   "include": [
     "src/**/*"
-  ],
+, "index.js"  ],
   "extends": "./tsconfig.paths.json"
 }

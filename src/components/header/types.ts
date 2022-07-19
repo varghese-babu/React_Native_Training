@@ -4,5 +4,6 @@ export interface HeaderParams {
   Icon: FC<SVGProps<SVGElement>>;
   titleImage?: HTMLImageElement;
   titleText?: string;
-  style?: any,
+  style?: any;
+  onIconPress: () => void;
 }

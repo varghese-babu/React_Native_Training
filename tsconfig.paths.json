@@ -7,7 +7,7 @@
         "@config/*": ["src/config/*"],
         "@constants/*": ["src/constants/*"],
         "@hooks/*": ["src/hooks/*"],
-        "@navigation": ["src/navigation"],
+        "@navigation/*": ["src/navigation/*"],
         "@pages/*": ["src/pages/*"],
         "@reducers/*": ["src/reducers/*"],
         "@screens": ["src/screens"],

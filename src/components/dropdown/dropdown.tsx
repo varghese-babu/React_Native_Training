@@ -25,6 +25,7 @@ const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
         <View style={Icon ? styles.statusView : styles.statusAndRole}>
           {values.map(statusValue => (
             <TouchableOpacity
+              key = {statusValue}
               style={styles.statusText}
               onPress={() => updateFunction(statusValue)}>
               <Text>{statusValue}</Text>
