@@ -13,6 +13,7 @@ import { Header, DropDown, EmployeeCard } from '@components';
 import { navigateTo } from '@services/navigation/navigationService';
 import { ScreenNames } from '@navigation/screenNames';
 import { useGetAllEmployeesQuery } from '@services/hooks/home';
+import Svg from 'react-native-svg';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
   const [status, onChangeStatus] = useState<string | null>(null);
