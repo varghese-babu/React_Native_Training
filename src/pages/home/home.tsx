@@ -12,13 +12,13 @@ import { KvLogo } from '@assets/images';
 import { Header, DropDown, EmployeeCard } from '@components';
 import { navigateTo } from '@services/navigation/navigationService';
 import { ScreenNames } from '@navigation/screenNames';
-import { useGetHomeContentsQuery } from '@services/hooks/home';
+import { useGetAllEmployeesQuery } from '@services/hooks/home';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
   const [status, onChangeStatus] = useState<string | null>(null);
 
-  const resp = useGetHomeContentsQuery();
-  console.log(resp.data.employees[0]);
+  const resp = useGetAllEmployeesQuery();
+  console.log(resp?.data?.employees[0]);
   return (
     <>
       <View style={styles.container}>
