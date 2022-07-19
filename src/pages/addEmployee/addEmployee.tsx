@@ -11,6 +11,8 @@ import {
 import { Button, DropDown, Header } from '@components';
 import { UploadIcon, BackIcon, DropDownIcon } from '@assets/icons';
 import styles from './styles';
+import { ScreenNames } from '@navigation/screenNames';
+import { goBack } from '@services/navigation/navigationService';
 
 const AddEmployeePage: FunctionComponent = () => {
   const [name, onChangeName] = useState<string | null>(null);
@@ -23,7 +25,7 @@ const AddEmployeePage: FunctionComponent = () => {
 
   return (
     <SafeAreaView style={styles.pageStyle}>
-      <Header Icon={BackIcon} titleText="Add Employee" />
+      <Header Icon={BackIcon} titleText="Add Employee" onIconPress={goBack} />
 
       <ScrollView style={styles.scrollViewStyle}>
         <View>

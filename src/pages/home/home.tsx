@@ -10,14 +10,24 @@ import {
 } from '@assets/icons';
 import { KvLogo } from '@assets/images';
 import { Header, DropDown, EmployeeCard } from '@components';
+import { navigateTo } from '@services/navigation/navigationService';
+import { ScreenNames } from '@navigation/screenNames';
+import { useGetAllEmployeesQuery } from '@services/hooks/home';
 import Svg from 'react-native-svg';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
   const [status, onChangeStatus] = useState<string | null>(null);
+
+  const resp = useGetAllEmployeesQuery();
+  console.log(resp?.data?.employees[0]);
   return (
     <>
       <View style={styles.container}>
-        <Header Icon={HamburgerIcon} titleImage={KvLogo} />
+        <Header
+          Icon={HamburgerIcon}
+          titleImage={KvLogo}
+          onIconPress={() => null}
+        />
 
         <View style={styles.listTitle}>
           <Text style={styles.listHeadText}>Employee List</Text>
@@ -36,7 +46,9 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
         </View>
 
         <EmployeeCard employeeName="Vishal M" status="Probation" />
-        <TouchableOpacity style={styles.floatStyle}>
+        <TouchableOpacity
+          style={styles.floatStyle}
+          onPress={() => navigateTo(ScreenNames.AddEmployee)}>
           <Text style={styles.floatTextStyle}>+</Text>
         </TouchableOpacity>
       </View>

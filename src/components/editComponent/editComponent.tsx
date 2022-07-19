@@ -23,11 +23,14 @@ const EditComponent: FunctionComponent<EditComponentParams> = (
       }
       contentStyle={styles.editBoxStyle}>
       {listMenu.map(listItem => (
-      <TouchableOpacity onPress={listItem.onPress} style={styles.editStyle}>
-        <listItem.icon style={styles.pencilIconStyle} />
-        <Text style={styles.textStyle}>{listItem.name}</Text>
-      </TouchableOpacity>
-    ))}
+        <TouchableOpacity
+          key={listItem.name}
+          onPress={listItem.onPress}
+          style={styles.editStyle}>
+          <listItem.icon style={styles.pencilIconStyle} />
+          <Text style={styles.textStyle}>{listItem.name}</Text>
+        </TouchableOpacity>
+      ))}
     </Menu>
   );
 };
