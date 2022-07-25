@@ -1,3 +1,4 @@
 export interface StatusIndicatorParams {
-    statusName: string;
+  statusName: string;
+  style: any;
 }

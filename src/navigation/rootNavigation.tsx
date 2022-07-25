@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { AddEmployeeScreen, HomeScreen } from '@screens';
+import { AddEmployeeScreen, HomeScreen, EmployeeDetailsScreen } from '@screens';
 import { ScreenNames } from './screenNames';
 import {
   isReadyRef,
@@ -35,6 +35,10 @@ const RootNavigation: FunctionComponent = () => (
       }}>
       <Screen name={ScreenNames.Home} component={HomeScreen} />
       <Screen name={ScreenNames.AddEmployee} component={AddEmployeeScreen} />
+      <Screen
+        name={ScreenNames.EmployeeDetails}
+        component={EmployeeDetailsScreen}
+      />
     </Navigator>
   </NavigationContainer>
 );

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { HomePageProps } from './types';
 import styles from './styles';
 import {
@@ -9,24 +9,36 @@ import {
   PolygonIcon
 } from '@assets/icons';
 import { KvLogo } from '@assets/images';
-import { Header, DropDown, EmployeeCard } from '@components';
+import { Header, DropDown, EmployeeCard, ModalComponent } from '@components';
 import { navigateTo } from '@services/navigation/navigationService';
 import { ScreenNames } from '@navigation/screenNames';
-import { useGetAllEmployeesQuery } from '@services/hooks/home';
+import {
+  useGetAllEmployeesQuery,
+  useDeleteEmployeeMutation
+} from '@services/hooks/employee';
 import Svg from 'react-native-svg';
+import { EmployeeReqType } from '@services/hooks/types';
+import { useFocusEffect } from '@react-navigation/native';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
-  const [status, onChangeStatus] = useState<string | null>(null);
+  const [status, onChangeStatus] = useState<string>('');
 
-  const resp = useGetAllEmployeesQuery();
-  console.log(resp?.data?.employees[0]);
+  const { data, refetch } = useGetAllEmployeesQuery();
+  const value = data?.employees;
+
+  const [deleteEmployee] = useDeleteEmployeeMutation();
+
+  useFocusEffect(() => {
+    refetch();
+  });
+
   return (
     <>
       <View style={styles.container}>
         <Header
           Icon={HamburgerIcon}
           titleImage={KvLogo}
-          onIconPress={() => null}
+          onIconPress={() => console.log('hello')}
         />
 
         <View style={styles.listTitle}>
@@ -44,8 +56,18 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <Text style={styles.nameTitleStyle}>Employee Name</Text>
           <Text style={styles.statusTitleStyle}>Status</Text>
         </View>
+        <ScrollView>
+          {value?.map((mapValue: EmployeeReqType) => (
+            <EmployeeCard
+              employeeName={mapValue.name}
+              status={mapValue.jobStatus}
+              onCardClick={() =>
+                navigateTo(ScreenNames.EmployeeDetails, { id: mapValue.id })
+              }
+            />
+          ))}
+        </ScrollView>
 
-        <EmployeeCard employeeName="Vishal M" status="Probation" />
         <TouchableOpacity
           style={styles.floatStyle}
           onPress={() => navigateTo(ScreenNames.AddEmployee)}>
