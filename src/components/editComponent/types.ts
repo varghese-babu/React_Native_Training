@@ -1,14 +1,12 @@
-import { FC, SVGProps } from "react";
+import { FC, SVGProps } from 'react';
 
 export interface EditComponentParams {
-
-
-listMenu: Array<{
+  listMenu: Array<{
     name: string;
     icon: any;
     onPress: any;
   }>;
   visible: boolean;
-  hideMenu: () => void; 
+  hideMenu: () => void;
   editMenu: () => void;
 }

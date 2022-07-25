@@ -3,6 +3,7 @@ import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
   nameStyle: {
+    flex: 3,
     marginLeft: '20@s',
     fontFamily: 'Nunito',
     fontStyle: 'normal',
@@ -12,10 +13,12 @@ const styles = ScaledSheet.create({
 
   cardStyle: {
     flexDirection: 'row',
+    flex: 1,
     alignItems: 'center',
-    height: '40@s',
+    height: '42@s',
     borderColor: '#ececec',
     borderBottomWidth: 1,
+    justifyContent: 'space-between'
   },
 
   editIconStyle: {
@@ -47,6 +50,15 @@ const styles = ScaledSheet.create({
 
   textStyle: {
     marginLeft: '8@s'
+  },
+
+  statusIndicatorStyle: {
+    flex: 3
+  },
+
+  editComponentStyle: {
+    flex: 1,
+    alignItems: 'center',
   }
 });
 

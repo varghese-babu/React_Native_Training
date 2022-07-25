@@ -3,13 +3,12 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { EmployeeCardParams } from './types';
 import styles from './styles';
 import { EditIcon, EditPencilIcon, DeleteIcon } from '@assets/icons';
-import StatusIndicator from '../statusIndicator/statusIndicator';
-import EditComponent from '../editComponent/editComponent';
+import {StatusIndicator, EditComponent} from '@components';
 
 const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
   props: EmployeeCardParams
 ) => {
-  const { employeeName, status } = props;
+  const { employeeName, status, onCardClick } = props;
   const listOfObjects = [
     {
       name: 'Edit',
@@ -34,19 +33,23 @@ const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
     setVisible(false);
   };
 
-
   return (
-    <TouchableOpacity style={styles.cardStyle}>
+    <TouchableOpacity style={styles.cardStyle} onPress={onCardClick}>
       <View style={styles.nameStyle}>
         <Text>{employeeName}</Text>
       </View>
-      <StatusIndicator statusName={status} />
-      <EditComponent
+      <StatusIndicator
+        statusName={status}
+        style={styles.statusIndicatorStyle}
+      />
+      <View style={styles.editComponentStyle}>
+        <EditComponent
           listMenu={listOfObjects}
           visible={visible}
           hideMenu={hideMenu}
-          editMenu = {editMenu}
+          editMenu={editMenu}
         />
+      </View>
     </TouchableOpacity>
   );
 };

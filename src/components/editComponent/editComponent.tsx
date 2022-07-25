@@ -8,7 +8,7 @@ import { Menu } from 'react-native-paper';
 const EditComponent: FunctionComponent<EditComponentParams> = (
   props: EditComponentParams
 ) => {
-  const { listMenu, visible, hideMenu, editMenu } = props;
+  const { listMenu, visible, hideMenu, editMenu} = props;
 
   return (
     <Menu

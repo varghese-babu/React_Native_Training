@@ -1,6 +1,17 @@
 import Button from './button/Button';
-import Header from './header/header';
 import DropDown from './dropdown/dropdown';
+import EditComponent from './editComponent/editComponent';
 import EmployeeCard from './employeeCard/employeeCard';
+import Header from './header/header';
+import ModalComponent from './modal/modalComponent';
+import StatusIndicator from './statusIndicator/statusIndicator';
 
-export { Button, Header, DropDown, EmployeeCard };
+export {
+  Button,
+  DropDown,
+  EditComponent,
+  EmployeeCard,
+  Header,
+  ModalComponent,
+  StatusIndicator
+};
