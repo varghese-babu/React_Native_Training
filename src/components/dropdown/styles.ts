@@ -1,3 +1,4 @@
+import { colors } from '@themes';
 import { ScaledSize } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
 
@@ -8,7 +9,7 @@ const styles = ScaledSheet.create({
   },
 
   statusView: {
-    borderColor: '#ffffff',
+    borderColor: colors.WHITE,
     elevation: 2,
     position: 'absolute',
     top: 23,
@@ -23,8 +24,8 @@ const styles = ScaledSheet.create({
 
   statusText: {
     alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderColor: '#e0e0e0',
+    backgroundColor: colors.WHITE,
+    borderColor: colors.GREY_88,
     borderWidth: 1,
     paddingHorizontal: '11@s',
     paddingVertical: '6@s'
@@ -36,8 +37,8 @@ const styles = ScaledSheet.create({
 
   statusDropDownStyle: {
     alignItems: 'center',
-    backgroundColor: '#fafafa',
-    borderColor: '#d9d9d9',
+    backgroundColor: colors.GREY_98,
+    borderColor: colors.GREY_85,
     borderRadius: 10,
     borderWidth: '1@s',
     flexDirection: 'row',
@@ -49,7 +50,7 @@ const styles = ScaledSheet.create({
   },
 
   statusAndRole: {
-    borderColor: '#ffffff',
+    borderColor: colors.WHITE,
     elevation: 2,
     marginHorizontal: '12@s',
     position: 'absolute',

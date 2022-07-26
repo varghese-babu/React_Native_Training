@@ -1,3 +1,4 @@
+import { colors } from '@themes';
 import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
@@ -9,7 +10,15 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     fontFamily: 'Nunito Sans',
     fontStyle: 'normal',
-    fontWeight: 400,
+    fontWeight: 400
+  },
+
+  statusTextInactiveStyle: {
+    color: colors.WHITE
+  },
+
+  statusTextActiveAndProbationStyle: {
+    color: colors.BLACK
   }
 });
 

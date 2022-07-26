@@ -1,5 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { View, Text } from 'native-base';
+
+import { colors } from '@themes';
+
 import { StatusIndicatorParams } from './types';
 import styles from './styles';
 
@@ -8,17 +11,19 @@ const StatusIndicator: FunctionComponent<StatusIndicatorParams> = (
 ) => {
   const { statusName, style } = props;
 
-  const bgcolor = (() => {
-    if (statusName === 'Active') return '#d3f4be';
-    else if (statusName === 'Inactive') return '#ff0000';
-    else return '#F5ECB8';
-  })();
+  const bgcolor = useMemo(() => {
+    if (statusName === 'Active') return colors.TEA_GREEN;
+    else if (statusName === 'Inactive') return colors.RED;
+    else return colors.BLOND;
+  }, [statusName]);
 
   return (
     <View style={[styles.indicatorStyle, style, { backgroundColor: bgcolor }]}>
       <Text
         style={
-          statusName == 'Inactive' ? { color: '#ffffff' } : { color: '#000000' }
+          statusName == 'Inactive'
+            ? styles.statusTextInactiveStyle
+            : styles.statusTextActiveAndProbationStyle
         }>
         {statusName}
       </Text>

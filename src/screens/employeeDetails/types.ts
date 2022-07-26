@@ -3,7 +3,7 @@ import { ScreenNames } from '@navigation/screenNames';
 
 type ParamsList = {
   [ScreenNames.EmployeeDetails]: {
-    id: string;
+    id: number;
   };
 };
 

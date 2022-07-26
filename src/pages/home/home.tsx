@@ -1,5 +1,12 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  FlatList
+} from 'react-native';
 import { HomePageProps } from './types';
 import styles from './styles';
 import {
@@ -17,29 +24,35 @@ import {
   useDeleteEmployeeMutation
 } from '@services/hooks/employee';
 import Svg from 'react-native-svg';
-import { EmployeeReqType } from '@services/hooks/types';
+import { EmployeeData, EmployeeReqType } from '@services/hooks/types';
 import { useFocusEffect } from '@react-navigation/native';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
   const [status, onChangeStatus] = useState<string>('');
 
-  const { data, refetch } = useGetAllEmployeesQuery();
+  const { data, refetch: fetch } = useGetAllEmployeesQuery();
   const value = data?.employees;
 
   const [deleteEmployee] = useDeleteEmployeeMutation();
 
+  const renderFunction = (item: EmployeeData) => {
+    <EmployeeCard
+      employeeName={item.name}
+      status={item.jobStatus}
+      onCardClick={() =>
+        navigateTo(ScreenNames.EmployeeDetails, { id: item.id })
+      }
+    />;
+  };
+
   useFocusEffect(() => {
-    refetch();
+    fetch();
   });
 
   return (
     <>
       <View style={styles.container}>
-        <Header
-          Icon={HamburgerIcon}
-          titleImage={KvLogo}
-          onIconPress={() => console.log('hello')}
-        />
+        <Header Icon={HamburgerIcon} titleImage={KvLogo} />
 
         <View style={styles.listTitle}>
           <Text style={styles.listHeadText}>Employee List</Text>
@@ -56,18 +69,18 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <Text style={styles.nameTitleStyle}>Employee Name</Text>
           <Text style={styles.statusTitleStyle}>Status</Text>
         </View>
-        <ScrollView>
-          {value?.map((mapValue: EmployeeReqType) => (
+        <FlatList
+          data={value}
+          renderItem={({ item }) => (
             <EmployeeCard
-              employeeName={mapValue.name}
-              status={mapValue.jobStatus}
+              employeeName={item.name}
+              status={item.jobStatus}
               onCardClick={() =>
-                navigateTo(ScreenNames.EmployeeDetails, { id: mapValue.id })
+                navigateTo(ScreenNames.EmployeeDetails, { id: item.id })
               }
             />
-          ))}
-        </ScrollView>
-
+          )}
+        />
         <TouchableOpacity
           style={styles.floatStyle}
           onPress={() => navigateTo(ScreenNames.AddEmployee)}>

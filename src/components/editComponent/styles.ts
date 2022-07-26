@@ -1,3 +1,4 @@
+import { colors } from '@themes';
 import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
@@ -5,7 +6,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'column',
     top: '16@s',
     width: '80@s',
-    backgroundColor: '#ffffff'
+    backgroundColor: colors.WHITE
   },
 
   editStyle: {

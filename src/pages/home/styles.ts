@@ -5,7 +5,7 @@ import { ListIcon } from '@assets/icons';
 const styles = ScaledSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff'
+    backgroundColor: colors.WHITE
   },
 
   listTitle: {
@@ -20,14 +20,14 @@ const styles = ScaledSheet.create({
     marginTop: '15@vs',
     marginBottom: '16@vs',
     fontWeight: 'bold',
-    color: '#000000'
+    color: colors.BLACK
   },
 
   profileHead: {
     height: '56@vs',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#eaf9ff'
+    backgroundColor: colors.ALICE_BLUE
   },
 
   nameTitleStyle: {
@@ -51,7 +51,7 @@ const styles = ScaledSheet.create({
 
   floatStyle: {
     alignItems: 'center',
-    backgroundColor: '#03aeee',
+    backgroundColor: colors.PALATINATE_BLUE,
     borderRadius: 100,
     bottom: 32,
     height: '50@s',
@@ -62,7 +62,7 @@ const styles = ScaledSheet.create({
   },
 
   floatTextStyle: {
-    color: '#ffffff',
+    color: colors.WHITE,
     fontSize: '20@s'
   }
 });

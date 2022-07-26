@@ -30,11 +30,9 @@ const ModalComponent: FunctionComponent<ModalComponentParams> = (
   }, [countValue]);
 
   return (
-    <Modal isVisible={modalVisible} onBackdropPress={() => handleModalClose()}>
+    <Modal isVisible={modalVisible} onBackdropPress={handleModalClose}>
       <View style={styles.centeredView}>
-        <View>
-          <ModalIcon />
-        </View>
+        <ModalIcon />
 
         <Text style={styles.modalTextStyle}>New Employee has been added</Text>
 
