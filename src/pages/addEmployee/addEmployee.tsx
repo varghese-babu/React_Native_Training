@@ -15,7 +15,7 @@ import {
   DropDownIcon,
   EditEmployeeIcon
 } from '@assets/icons';
-import styles from './styles';
+
 import { ScreenNames } from '@navigation/screenNames';
 import {
   goBack,
@@ -27,8 +27,9 @@ import {
   useEditEmployeeMutation,
   useGetEmployeeByIdQuery
 } from '@services/hooks/employee';
-import { Modal } from 'native-base';
 import { AddEmployeePageParams } from './types';
+
+import styles from './styles';
 
 const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
   route

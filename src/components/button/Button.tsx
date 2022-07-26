@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+
 import { ButtonParams } from './types';
+
 import styles from './styles';
 
 const Button: FunctionComponent<ButtonParams> = (props: ButtonParams) => {

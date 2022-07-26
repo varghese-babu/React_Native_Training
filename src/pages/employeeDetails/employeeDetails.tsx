@@ -1,16 +1,16 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import { BackIcon, EditEmployeeIcon, EditPencilIcon } from '@assets/icons';
+import { BackIcon, EditEmployeeIcon, IdProofIcon } from '@assets/icons';
 import { Header, StatusIndicator } from '@components';
 import { goBack, navigateTo } from '@services/navigation/navigationService';
-import { EmployeeDetailsPageParams } from './types';
-import { IdProofIcon } from '@assets/icons';
 import { useGetEmployeeByIdQuery } from '@services/hooks/employee';
-
-import styles from './styles';
 import { ScreenNames } from '@navigation/screenNames';
 import { useFocusEffect } from '@react-navigation/native';
+
+import { EmployeeDetailsPageParams } from './types';
+
+import styles from './styles';
 
 const EmployeeDetailsPage: FunctionComponent<EmployeeDetailsPageParams> = ({
   route

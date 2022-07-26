@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+
+import { EditIcon, EditPencilIcon, DeleteIcon } from '@assets/icons';
+import { StatusIndicator, EditComponent } from '@components';
+
 import { EmployeeCardParams } from './types';
 import styles from './styles';
-import { EditIcon, EditPencilIcon, DeleteIcon } from '@assets/icons';
-import {StatusIndicator, EditComponent} from '@components';
 
 const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
   props: EmployeeCardParams

@@ -4,6 +4,7 @@ import { View, Text } from 'native-base';
 import { colors } from '@themes';
 
 import { StatusIndicatorParams } from './types';
+
 import styles from './styles';
 
 const StatusIndicator: FunctionComponent<StatusIndicatorParams> = (

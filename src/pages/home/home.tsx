@@ -7,8 +7,8 @@ import {
   ScrollView,
   FlatList
 } from 'react-native';
-import { HomePageProps } from './types';
-import styles from './styles';
+import { useFocusEffect } from '@react-navigation/native';
+
 import {
   UploadIcon,
   HamburgerIcon,
@@ -23,9 +23,11 @@ import {
   useGetAllEmployeesQuery,
   useDeleteEmployeeMutation
 } from '@services/hooks/employee';
-import Svg from 'react-native-svg';
 import { EmployeeData, EmployeeReqType } from '@services/hooks/types';
-import { useFocusEffect } from '@react-navigation/native';
+
+import { HomePageProps } from './types';
+
+import styles from './styles';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
   const [status, onChangeStatus] = useState<string>('');

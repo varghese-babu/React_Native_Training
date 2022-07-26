@@ -1,7 +1,9 @@
-import { ModalIcon } from '@assets/icons';
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
+
+import { ModalIcon } from '@assets/icons';
+
 import styles from './styles';
 import ModalComponentParams from './types';
 
