@@ -1,8 +1,10 @@
+import { colors } from '@themes';
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
   nameStyle: {
+    flex: 3,
     marginLeft: '20@s',
     fontFamily: 'Nunito',
     fontStyle: 'normal',
@@ -12,10 +14,12 @@ const styles = ScaledSheet.create({
 
   cardStyle: {
     flexDirection: 'row',
+    flex: 1,
     alignItems: 'center',
-    height: '40@s',
-    borderColor: '#ececec',
+    height: '42@s',
+    borderColor: colors.BRIGHT_GRAY,
     borderBottomWidth: 1,
+    justifyContent: 'space-between'
   },
 
   editIconStyle: {
@@ -32,7 +36,7 @@ const styles = ScaledSheet.create({
     marginRight: '20@s',
     width: '80@s',
     height: '58@s',
-    backgroundColor: '#ffffff'
+    backgroundColor: colors.WHITE
   },
 
   editStyle: {
@@ -47,6 +51,15 @@ const styles = ScaledSheet.create({
 
   textStyle: {
     marginLeft: '8@s'
+  },
+
+  statusIndicatorStyle: {
+    flex: 3
+  },
+
+  editComponentStyle: {
+    flex: 1,
+    alignItems: 'center',
   }
 });
 

@@ -1,9 +1,9 @@
-import { PolygonIcon } from '@assets/icons';
-import styles from './styles';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+
 import { DropDownParams } from './types';
-import { useState } from 'react';
+
+import styles from './styles';
 
 const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
   const { Icon, text, DropIcon, values, style, updateValue } = props;
@@ -11,7 +11,7 @@ const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
   const [visible, setVisible] = useState(false);
 
   const toggleDropdown = () => {
-    setVisible(!visible);
+    setVisible(visible => !visible);
   };
 
   const updateFunction = (statusValue: string) => {
@@ -25,7 +25,7 @@ const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
         <View style={Icon ? styles.statusView : styles.statusAndRole}>
           {values.map(statusValue => (
             <TouchableOpacity
-              key = {statusValue}
+              key={statusValue}
               style={styles.statusText}
               onPress={() => updateFunction(statusValue)}>
               <Text>{statusValue}</Text>

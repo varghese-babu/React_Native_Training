@@ -1,9 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import styles from './styles';
-import { EditPencilIcon, DeleteIcon, EditIcon } from '@assets/icons';
-import { EditComponentParams } from './types';
 import { Menu } from 'react-native-paper';
+
+import { EditPencilIcon, DeleteIcon, EditIcon } from '@assets/icons';
+
+import { EditComponentParams } from './types';
+
+import styles from './styles';
 
 const EditComponent: FunctionComponent<EditComponentParams> = (
   props: EditComponentParams

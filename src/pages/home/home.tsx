@@ -1,7 +1,14 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
-import { HomePageProps } from './types';
-import styles from './styles';
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  FlatList
+} from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+
 import {
   UploadIcon,
   HamburgerIcon,
@@ -9,25 +16,45 @@ import {
   PolygonIcon
 } from '@assets/icons';
 import { KvLogo } from '@assets/images';
-import { Header, DropDown, EmployeeCard } from '@components';
+import { Header, DropDown, EmployeeCard, ModalComponent } from '@components';
 import { navigateTo } from '@services/navigation/navigationService';
 import { ScreenNames } from '@navigation/screenNames';
-import { useGetAllEmployeesQuery } from '@services/hooks/home';
-import Svg from 'react-native-svg';
+import {
+  useGetAllEmployeesQuery,
+  useDeleteEmployeeMutation
+} from '@services/hooks/employee';
+import { EmployeeData, EmployeeReqType } from '@services/hooks/types';
+
+import { HomePageProps } from './types';
+
+import styles from './styles';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
-  const [status, onChangeStatus] = useState<string | null>(null);
+  const [status, onChangeStatus] = useState<string>('');
 
-  const resp = useGetAllEmployeesQuery();
-  console.log(resp?.data?.employees[0]);
+  const { data, refetch: fetch } = useGetAllEmployeesQuery();
+  const value = data?.employees;
+
+  const [deleteEmployee] = useDeleteEmployeeMutation();
+
+  const renderFunction = (item: EmployeeData) => {
+    <EmployeeCard
+      employeeName={item.name}
+      status={item.jobStatus}
+      onCardClick={() =>
+        navigateTo(ScreenNames.EmployeeDetails, { id: item.id })
+      }
+    />;
+  };
+
+  useFocusEffect(() => {
+    fetch();
+  });
+
   return (
     <>
       <View style={styles.container}>
-        <Header
-          Icon={HamburgerIcon}
-          titleImage={KvLogo}
-          onIconPress={() => null}
-        />
+        <Header Icon={HamburgerIcon} titleImage={KvLogo} />
 
         <View style={styles.listTitle}>
           <Text style={styles.listHeadText}>Employee List</Text>
@@ -44,8 +71,18 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <Text style={styles.nameTitleStyle}>Employee Name</Text>
           <Text style={styles.statusTitleStyle}>Status</Text>
         </View>
-
-        <EmployeeCard employeeName="Vishal M" status="Probation" />
+        <FlatList
+          data={value}
+          renderItem={({ item }) => (
+            <EmployeeCard
+              employeeName={item.name}
+              status={item.jobStatus}
+              onCardClick={() =>
+                navigateTo(ScreenNames.EmployeeDetails, { id: item.id })
+              }
+            />
+          )}
+        />
         <TouchableOpacity
           style={styles.floatStyle}
           onPress={() => navigateTo(ScreenNames.AddEmployee)}>

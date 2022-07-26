@@ -8,5 +8,5 @@ export interface DropDownParams {
   values: Array<string>;
   DropIcon: FC<SVGProps<SVGElement>>;
   style?: any;
-  updateValue: React.Dispatch<React.SetStateAction<string | null>>;
+  updateValue: React.Dispatch<React.SetStateAction<string>>;
 }

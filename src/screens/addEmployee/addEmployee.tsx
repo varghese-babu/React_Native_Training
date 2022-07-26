@@ -4,7 +4,7 @@ import { AddEmployeeScreenProps } from './types';
 
 import AddEmployeePage from '@pages/addEmployee/addEmployee';
 
-const AddEmployeeScreen: FunctionComponent = (
+const AddEmployeeScreen: FunctionComponent<AddEmployeeScreenProps> = (
   props: AddEmployeeScreenProps
 ) => <AddEmployeePage {...props} />;
 

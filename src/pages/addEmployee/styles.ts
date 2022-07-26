@@ -1,3 +1,4 @@
+import { colors } from '@themes';
 import { blue100 } from 'react-native-paper/lib/typescript/styles/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 
@@ -8,12 +9,12 @@ const styles = ScaledSheet.create({
     borderWidth: '1@s',
     padding: '10@s',
     borderRadius: 10,
-    borderColor: '#d9d9d9',
-    backgroundColor: '#fafafa'
+    borderColor: colors.GREY_85,
+    backgroundColor: colors.GREY_98
   },
 
   pageStyle: {
-    backgroundColor: '#ffffff'
+    backgroundColor: colors.WHITE
   },
 
   name: {
@@ -31,8 +32,8 @@ const styles = ScaledSheet.create({
     borderWidth: '1@s',
     padding: '10@s',
     borderRadius: 10,
-    borderColor: '#d9d9d9',
-    backgroundColor: '#fafafa'
+    borderColor: colors.GREY_85,
+    backgroundColor: colors.GREY_98
   },
 
   uploadViewStyle: {
@@ -46,7 +47,7 @@ const styles = ScaledSheet.create({
 
   uploadTextStyle: {
     margin: '10@s',
-    color: '#03aeee'
+    color: colors.PALATINATE_BLUE
   },
 
   bottomButtonStyle: {
@@ -58,30 +59,30 @@ const styles = ScaledSheet.create({
   },
 
   cancelButtonStyle: {
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.WHITE,
     flex: 1,
     borderRadius: 5,
     alignItems: 'center'
   },
 
   addButtonStyle: {
-    backgroundColor: '#03aeee',
+    backgroundColor: colors.PALATINATE_BLUE,
     flex: 1,
     borderRadius: 5,
     alignItems: 'center'
   },
 
   addButtonTextStyle: {
-    color: '#ffffff',
+    color: colors.WHITE,
     padding: '10@s'
   },
 
   cancelButtonTextStyle: {
-    color: '#000000',
+    color: colors.BLACK,
     padding: '10@s'
   },
   headerStyle: {
-    backgroundColor: '#0000ff'
+    backgroundColor: colors.BLUE
   },
 
   scrollViewStyle: {
