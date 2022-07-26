@@ -1,5 +1,5 @@
 export interface EmployeeReqType {
-  id?: string;
+  id: string;
   name: string;
   joiningDate: string;
   jobStatus: string;

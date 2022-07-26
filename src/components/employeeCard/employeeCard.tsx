@@ -1,25 +1,39 @@
 import React, { FunctionComponent, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+
 import { EmployeeCardParams } from './types';
-import styles from './styles';
 import { EditIcon, EditPencilIcon, DeleteIcon } from '@assets/icons';
-import {StatusIndicator, EditComponent} from '@components';
+import { StatusIndicator, EditComponent } from '@components';
+import { navigateTo } from '@services/navigation/navigationService';
+import { ScreenNames } from '@navigation/screenNames';
+import { useDeleteEmployeeMutation } from '@services/hooks/employee';
+
+import styles from './styles';
 
 const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
   props: EmployeeCardParams
 ) => {
-  const { employeeName, status, onCardClick } = props;
+  const { employeeName, status, onCardClick, employeeId } = props;
+
+  const [deleteEmployee] = useDeleteEmployeeMutation();
+
   const listOfObjects = [
     {
       name: 'Edit',
       icon: EditPencilIcon,
-      onPress: null
+      onPress: () =>
+        navigateTo(ScreenNames.AddEmployee, {
+          id: employeeId,
+          isEditPage: true
+        })
     },
 
     {
       name: 'Delete',
       icon: DeleteIcon,
-      onPress: null
+      onPress: deleteEmployee({
+        id: parseInt(employeeId)
+      })
     }
   ];
 

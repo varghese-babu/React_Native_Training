@@ -64,6 +64,7 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
               onCardClick={() =>
                 navigateTo(ScreenNames.EmployeeDetails, { id: mapValue.id })
               }
+              employeeId={mapValue.id}
             />
           ))}
         </ScrollView>
