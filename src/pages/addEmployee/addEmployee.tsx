@@ -104,6 +104,7 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
       <ModalComponent
         modalVisible={modalVisible}
         handleModalClose={handleModalClose}
+        isEdit={isEditPage}
       />
       <SafeAreaView style={styles.pageStyle}>
         <Header Icon={BackIcon} titleText="Add Employee" onIconPress={goBack} />
