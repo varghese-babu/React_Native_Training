@@ -3,7 +3,7 @@ import { colors, fonts, globalStyles } from '@themes';
 
 const styles = ScaledSheet.create({
   header: {
-    backgroundColor: '#f4f4f5',
+    backgroundColor: colors.GHOST_WHITE,
     width: '375@s',
     left: '0@s',
     right: '0@s',

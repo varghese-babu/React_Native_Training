@@ -3,18 +3,23 @@ import {
   GetEmpByIdPayloadType,
   EmployeeReqType,
   ResponseType,
-  EmployeeRespType
+  EmployeeRespType,
+  EmployeeData,
+  IndividualEmployeeData
 } from './types';
 
 export const homeApi = api.injectEndpoints({
   endpoints: builder => ({
-    getAllEmployees: builder.query<any, void>({
+    getAllEmployees: builder.query<EmployeeRespType, void>({
       query: () => ({
         url: '/employees',
         method: 'GET'
       })
     }),
-    getEmployeeById: builder.query<any, GetEmpByIdPayloadType>({
+    getEmployeeById: builder.query<
+      IndividualEmployeeData,
+      GetEmpByIdPayloadType
+    >({
       query: payload => ({
         url: `/employees/${payload.id}`,
         method: 'GET'

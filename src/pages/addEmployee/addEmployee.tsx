@@ -9,8 +9,13 @@ import {
 } from 'react-native';
 
 import { Button, DropDown, Header, ModalComponent } from '@components';
-import { UploadIcon, BackIcon, DropDownIcon } from '@assets/icons';
-import styles from './styles';
+import {
+  UploadIcon,
+  BackIcon,
+  DropDownIcon,
+  EditEmployeeIcon
+} from '@assets/icons';
+
 import { ScreenNames } from '@navigation/screenNames';
 import {
   goBack,
@@ -22,8 +27,9 @@ import {
   useEditEmployeeMutation,
   useGetEmployeeByIdQuery
 } from '@services/hooks/employee';
-import { Modal } from 'native-base';
 import { AddEmployeePageParams } from './types';
+
+import styles from './styles';
 
 const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
   route
@@ -31,7 +37,6 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
   const { id, isEditPage } = route?.params || '';
 
   const [name, onChangeName] = useState<string>('');
-  const [idLocal, onChangeId] = useState<string>('');
   const [dateValue, onChangeDate] = useState<string>('');
   const [experience, onChangeExperience] = useState<string>('');
   const [address, onChangeAddress] = useState<string>('');
@@ -46,7 +51,6 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
   useEffect(() => {
     if (isEditPage && data) {
       onChangeName(data?.employee.name);
-      onChangeId(data?.employee.id);
       onChangeDate(data?.employee.joiningDate.substring(0, 10));
       onChangeExperience(data?.employee.experience);
       onChangeAddress(data?.employee.address);
@@ -56,13 +60,17 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
   }, [data]);
 
   const dataLocal = {
-    id: idLocal,
+    id: data?.employee.id || 0,
     name: name,
     joiningDate: dateValue?.substring(0, 10),
     jobStatus: jobStatus,
     role: role,
     experience: experience,
     address: address
+  };
+
+  const onPressHandler = () => {
+    isEditPage ? editEmployee(dataLocal) : addEmployee(dataLocal);
   };
 
   const handleModalClose = () => {
@@ -78,12 +86,16 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
   useEffect(() => {
     if (response.isSuccess) {
       setModalVisible(true);
+    } else if (response.isError) {
+      alert('error');
     }
   }, [response]);
 
   useEffect(() => {
     if (editResponse.isSuccess) {
       setModalVisible(true);
+    } else if (editResponse.isError) {
+      alert('error');
     }
   }, [editResponse]);
 
@@ -107,17 +119,16 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
             />
           </View>
 
-          <View>
-            <Text style={styles.text}>Employee</Text>
-            <TextInput
-              value={isEditPage ? id.toString() : ''}
-              placeholder="Employee ID"
-              style={styles.input}
-              keyboardType="numeric"
-              editable={!isEditPage}
-              onChangeText={idLocal => onChangeId(idLocal)}
-            />
-          </View>
+          {isEditPage && (
+            <View>
+              <Text style={styles.text}>Employee ID</Text>
+              <TextInput
+                value={id.toString()}
+                style={styles.input}
+                editable={false}
+              />
+            </View>
+          )}
 
           <View>
             <Text style={styles.name}>Joining Date</Text>
@@ -184,11 +195,7 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.addButtonStyle}
-              onPress={
-                isEditPage
-                  ? () => editEmployee(dataLocal)
-                  : () => addEmployee(dataLocal)
-              }>
+              onPress={onPressHandler}>
               <Text style={styles.addButtonTextStyle}>Add</Text>
             </TouchableOpacity>
           </View>

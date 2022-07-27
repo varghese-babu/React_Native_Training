@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
-import styles from './styles';
-import { HamburgerIcon, ListIcon, PolygonIcon } from '@assets/icons';
-import { KvLogo } from '@assets/images';
+
 import { HeaderParams } from './types';
-import { goBack } from '@services/navigation/navigationService';
+
+import styles from './styles';
 
 const Header: FunctionComponent<HeaderParams> = (props: HeaderParams) => {
   const { Icon, titleImage, titleText, style, onIconPress } = props;

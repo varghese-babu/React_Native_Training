@@ -1,3 +1,4 @@
+import { colors } from '@themes';
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 import { ScaledSheet } from 'react-native-size-matters';
 
@@ -16,7 +17,7 @@ const styles = ScaledSheet.create({
     flex: 1,
     alignItems: 'center',
     height: '42@s',
-    borderColor: '#ececec',
+    borderColor: colors.BRIGHT_GRAY,
     borderBottomWidth: 1,
     justifyContent: 'space-between'
   },
@@ -35,7 +36,7 @@ const styles = ScaledSheet.create({
     marginRight: '20@s',
     width: '80@s',
     height: '58@s',
-    backgroundColor: '#ffffff'
+    backgroundColor: colors.WHITE
   },
 
   editStyle: {

@@ -1,12 +1,10 @@
 import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
-  indicatorStyle: {},
-
   rowStyle: {
     flexDirection: 'row',
-    marginHorizontal: 20,
-    marginTop: 20,
+    marginHorizontal: '20@s',
+    marginTop: '20@s',
     padding: '5@s'
   },
 
@@ -18,7 +16,7 @@ const styles = ScaledSheet.create({
   },
 
   innerStyle: {
-    flex: 1,
+    flex: 1
   },
 
   detailsViewStyle: {
@@ -26,8 +24,7 @@ const styles = ScaledSheet.create({
   },
 
   textStyle: {
-
-   marginVertical: 5,
+    marginVertical: 5
   }
 });
 

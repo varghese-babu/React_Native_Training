@@ -1,7 +1,9 @@
-import { ModalIcon } from '@assets/icons';
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
+
+import { ModalIcon } from '@assets/icons';
+
 import styles from './styles';
 import ModalComponentParams from './types';
 
@@ -30,11 +32,9 @@ const ModalComponent: FunctionComponent<ModalComponentParams> = (
   }, [countValue]);
 
   return (
-    <Modal isVisible={modalVisible} onBackdropPress={() => handleModalClose()}>
+    <Modal isVisible={modalVisible} onBackdropPress={handleModalClose}>
       <View style={styles.centeredView}>
-        <View>
-          <ModalIcon />
-        </View>
+        <ModalIcon />
 
         <Text style={styles.modalTextStyle}>New Employee has been added</Text>
 

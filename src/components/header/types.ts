@@ -5,5 +5,5 @@ export interface HeaderParams {
   titleImage?: HTMLImageElement;
   titleText?: string;
   style?: any;
-  onIconPress: () => void;
+  onIconPress?: () => void;
 }

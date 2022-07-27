@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import { EmployeeCardParams } from './types';
-import { EditIcon, EditPencilIcon, DeleteIcon } from '@assets/icons';
+import { EditPencilIcon, DeleteIcon } from '@assets/icons';
 import { StatusIndicator, EditComponent } from '@components';
 import { navigateTo } from '@services/navigation/navigationService';
 import { ScreenNames } from '@navigation/screenNames';
 import { useDeleteEmployeeMutation } from '@services/hooks/employee';
 
+import { EmployeeCardParams } from './types';
 import styles from './styles';
 
 const EmployeeCard: FunctionComponent<EmployeeCardParams> = (

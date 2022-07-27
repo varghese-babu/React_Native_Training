@@ -1,5 +1,5 @@
 export interface EmployeeReqType {
-  id: string;
+  id: number;
   name: string;
   joiningDate: string;
   jobStatus: string;
@@ -18,14 +18,20 @@ export interface ResponseType {
   error?: string;
 }
 
+export interface EmployeeData {
+  id: number;
+  name: string;
+  joiningDate: string;
+  jobStatus: string;
+  role: string;
+  experience: string;
+  address: string;
+}
+
+export interface IndividualEmployeeData {
+  employee: EmployeeData;
+}
+
 export interface EmployeeRespType {
-  employee: {
-    id?: string;
-    name: string;
-    joiningDate: string;
-    jobStatus: string;
-    role: string;
-    experience: string;
-    address: string;
-  };
+  employees: Array<EmployeeData>;
 }

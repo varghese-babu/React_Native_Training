@@ -1,9 +1,9 @@
-import { PolygonIcon } from '@assets/icons';
-import styles from './styles';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+
 import { DropDownParams } from './types';
-import { useState } from 'react';
+
+import styles from './styles';
 
 const DropDown: FunctionComponent<DropDownParams> = (props: DropDownParams) => {
   const { Icon, text, DropIcon, values, style, updateValue } = props;
