@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import {
   Text,
   View,
@@ -30,7 +35,7 @@ import { HomePageProps } from './types';
 import styles from './styles';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
-  const [status, onChangeStatus] = useState<string>('');
+  const [status, onChangeStatus] = useState<string>('status');
 
   const { data, refetch: fetch } = useGetAllEmployeesQuery();
   const value = data?.employees;
@@ -41,6 +46,17 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
       ? navigateTo(ScreenNames.EmployeeDetails, { id: idParam })
       : navigateTo(ScreenNames.AddEmployee);
   };
+
+  useEffect(() => {
+    fetch();
+    setEmployeeData(
+      status !== 'status'
+        ? value?.filter(employee => employee.jobStatus === status)
+        : value
+    );
+  }, [status, value]);
+
+  const [employeeData, setEmployeeData] = useState<EmployeeData[]>();
 
   const renderFunction = ({ item }: { item: EmployeeData; index: number }) => (
     <EmployeeCard
@@ -66,8 +82,8 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <Text style={styles.listHeadText}>Employee List</Text>
           <DropDown
             Icon={ListIcon}
-            text="Status"
-            values={['probation', 'active', 'inactive']}
+            text={status ? status : 'status'}
+            values={['Probation', 'active', 'inactive']}
             DropIcon={PolygonIcon}
             updateValue={onChangeStatus}
           />
@@ -77,7 +93,7 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <Text style={styles.nameTitleStyle}>Employee Name</Text>
           <Text style={styles.statusTitleStyle}>Status</Text>
         </View>
-        <FlatList data={value} renderItem={renderFunction} />
+        <FlatList data={employeeData} renderItem={renderFunction} />
         <TouchableOpacity
           style={styles.floatStyle}
           onPress={() => navigateToPage()}>
