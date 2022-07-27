@@ -20,6 +20,8 @@ const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
 
   const [deleteEmployee] = useDeleteEmployeeMutation();
 
+  const [visible, setVisible] = useState(false);
+
   const editMenu = () => {
     setVisible(!visible);
   };
@@ -57,7 +59,7 @@ const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
     [employeeId]
   );
 
-  const [visible, setVisible] = useState(false);
+ 
 
   return (
     <TouchableOpacity style={styles.cardStyle} onPress={onCardClick}>
