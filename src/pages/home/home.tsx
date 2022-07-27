@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import {
   Text,
   View,
@@ -36,20 +36,26 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
   const value = data?.employees;
 
   const [deleteEmployee] = useDeleteEmployeeMutation();
+  const navigateToPage = (idParam?: number) => {
+    idParam
+      ? navigateTo(ScreenNames.EmployeeDetails, { id: idParam })
+      : navigateTo(ScreenNames.AddEmployee);
+  };
 
-  const renderFunction = (item: EmployeeData) => {
+  const renderFunction = ({ item }: { item: EmployeeData; index: number }) => (
     <EmployeeCard
       employeeName={item.name}
       status={item.jobStatus}
-      onCardClick={() =>
-        navigateTo(ScreenNames.EmployeeDetails, { id: item.id })
-      }
-    />;
-  };
+      onCardClick={() => navigateToPage(item.id)}
+      employeeId={data?.employees[0]?.id || 0}
+    />
+  );
 
-  useFocusEffect(() => {
-    fetch();
-  });
+  useFocusEffect(
+    useCallback(() => {
+      fetch();
+    }, [])
+  );
 
   return (
     <>
@@ -71,21 +77,10 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <Text style={styles.nameTitleStyle}>Employee Name</Text>
           <Text style={styles.statusTitleStyle}>Status</Text>
         </View>
-        <FlatList
-          data={value}
-          renderItem={({ item }) => (
-            <EmployeeCard
-              employeeName={item.name}
-              status={item.jobStatus}
-              onCardClick={() =>
-                navigateTo(ScreenNames.EmployeeDetails, { id: item.id })
-              }
-            />
-          )}
-        />
+        <FlatList data={value} renderItem={renderFunction} />
         <TouchableOpacity
           style={styles.floatStyle}
-          onPress={() => navigateTo(ScreenNames.AddEmployee)}>
+          onPress={() => navigateToPage()}>
           <Text style={styles.floatTextStyle}>+</Text>
         </TouchableOpacity>
       </View>

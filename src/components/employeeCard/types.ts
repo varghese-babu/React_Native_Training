@@ -4,4 +4,5 @@ export interface EmployeeCardParams {
   employeeName: string;
   status: string;
   onCardClick: () => void;
+  employeeId: number;
 }

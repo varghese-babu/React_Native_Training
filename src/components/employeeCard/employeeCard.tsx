@@ -1,8 +1,14 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useMemo, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import { EditIcon, EditPencilIcon, DeleteIcon } from '@assets/icons';
+import { EditPencilIcon, DeleteIcon } from '@assets/icons';
 import { StatusIndicator, EditComponent } from '@components';
+import {
+  navigateAndReset,
+  navigateTo
+} from '@services/navigation/navigationService';
+import { ScreenNames } from '@navigation/screenNames';
+import { useDeleteEmployeeMutation } from '@services/hooks/employee';
 
 import { EmployeeCardParams } from './types';
 import styles from './styles';
@@ -10,20 +16,9 @@ import styles from './styles';
 const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
   props: EmployeeCardParams
 ) => {
-  const { employeeName, status, onCardClick } = props;
-  const listOfObjects = [
-    {
-      name: 'Edit',
-      icon: EditPencilIcon,
-      onPress: null
-    },
+  const { employeeName, status, onCardClick, employeeId } = props;
 
-    {
-      name: 'Delete',
-      icon: DeleteIcon,
-      onPress: null
-    }
-  ];
+  const [deleteEmployee] = useDeleteEmployeeMutation();
 
   const [visible, setVisible] = useState(false);
 
@@ -34,6 +29,37 @@ const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
   const hideMenu = () => {
     setVisible(false);
   };
+
+  const listOfObjects = useMemo(
+    () => [
+      {
+        name: 'Edit',
+        icon: EditPencilIcon,
+        onPress: () => {
+          hideMenu();
+          navigateTo(ScreenNames.AddEmployee, {
+            id: employeeId,
+            isEditPage: true
+          });
+        }
+      },
+
+      {
+        name: 'Delete',
+        icon: DeleteIcon,
+        onPress: () => {
+          console.log(employeeId);
+          deleteEmployee({
+            id: employeeId
+          });
+          navigateAndReset(ScreenNames.Home);
+        }
+      }
+    ],
+    [employeeId]
+  );
+
+ 
 
   return (
     <TouchableOpacity style={styles.cardStyle} onPress={onCardClick}>
