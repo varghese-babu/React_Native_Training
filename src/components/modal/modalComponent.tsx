@@ -7,10 +7,13 @@ import { ModalIcon } from '@assets/icons';
 import styles from './styles';
 import ModalComponentParams from './types';
 
+const editText = 'Employee details has been edited';
+const addText = 'New Employee has been added';
+
 const ModalComponent: FunctionComponent<ModalComponentParams> = (
   props: ModalComponentParams
 ) => {
-  const { modalVisible, handleModalClose } = props;
+  const { modalVisible, handleModalClose, isEdit } = props;
   const [countValue, setCountValue] = useState<number>(3);
   const myInterval = useRef<any | null>(null);
 
@@ -36,7 +39,7 @@ const ModalComponent: FunctionComponent<ModalComponentParams> = (
       <View style={styles.centeredView}>
         <ModalIcon />
 
-        <Text style={styles.modalTextStyle}>New Employee has been added</Text>
+        <Text style={styles.modalTextStyle}>{isEdit ? editText : addText}</Text>
 
         <Text style={styles.modalTextStyle}>successfully!</Text>
       </View>
