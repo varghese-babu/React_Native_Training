@@ -36,11 +36,16 @@ import styles from './styles';
 
 const HomePage: FunctionComponent<HomePageProps> = () => {
   const [status, onChangeStatus] = useState<string>('status');
-
+  const [employeeData, setEmployeeData] = useState<EmployeeData[]>();
   const { data, refetch: fetch } = useGetAllEmployeesQuery();
   const value = data?.employees;
 
-  const [deleteEmployee] = useDeleteEmployeeMutation();
+  enum jobStatusValues {
+    Active = 'active',
+    Inactive = 'inactive',
+    Probation = 'Probation'
+  }
+
   const navigateToPage = (idParam?: number) => {
     idParam
       ? navigateTo(ScreenNames.EmployeeDetails, { id: idParam })
@@ -55,8 +60,6 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
         : value
     );
   }, [status, value]);
-
-  const [employeeData, setEmployeeData] = useState<EmployeeData[]>();
 
   const renderFunction = ({ item }: { item: EmployeeData; index: number }) => (
     <EmployeeCard
@@ -83,7 +86,11 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
           <DropDown
             Icon={ListIcon}
             text={status ? status : 'status'}
-            values={['Probation', 'active', 'inactive']}
+            values={[
+              jobStatusValues.Probation,
+              jobStatusValues.Active,
+              jobStatusValues.Inactive
+            ]}
             DropIcon={PolygonIcon}
             updateValue={onChangeStatus}
           />
