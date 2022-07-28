@@ -7,7 +7,7 @@ import { ModalIcon } from '@assets/icons';
 import styles from './styles';
 import ModalComponentParams from './types';
 
-const editText = 'Employee details has been edted';
+const editText = 'Employee details has been edited';
 const addText = 'New Employee has been added';
 
 const ModalComponent: FunctionComponent<ModalComponentParams> = (
