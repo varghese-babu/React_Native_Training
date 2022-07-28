@@ -4,7 +4,6 @@ import {
   EmployeeReqType,
   ResponseType,
   EmployeeRespType,
-  EmployeeData,
   IndividualEmployeeData
 } from './types';
 
