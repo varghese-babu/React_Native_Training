@@ -1,6 +1,4 @@
-import { StyledProps } from 'native-base';
 import { FC, SVGProps } from 'react';
-import { StyleProp } from 'react-native';
 
 export interface DropDownParams {
   Icon?: FC<SVGProps<SVGElement>>;

@@ -59,8 +59,6 @@ const EmployeeCard: FunctionComponent<EmployeeCardParams> = (
     [employeeId]
   );
 
- 
-
   return (
     <TouchableOpacity style={styles.cardStyle} onPress={onCardClick}>
       <View style={styles.nameStyle}>
