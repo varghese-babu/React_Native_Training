@@ -27,6 +27,8 @@ import {
   useEditEmployeeMutation,
   useGetEmployeeByIdQuery
 } from '@services/hooks/employee';
+import { JOB_STATUS_VALUES } from '@constants/common';
+
 import { AddEmployeePageParams } from './types';
 
 import styles from './styles';
@@ -146,7 +148,11 @@ const AddEmployeePage: FunctionComponent<AddEmployeePageParams> = ({
             <DropDown
               text={jobStatus ? jobStatus : 'Select Status'}
               DropIcon={DropDownIcon}
-              values={['Probation', 'Active', 'Inactive']}
+              values={[
+                JOB_STATUS_VALUES.Probation,
+                JOB_STATUS_VALUES.Active,
+                JOB_STATUS_VALUES.Inactive
+              ]}
               style={styles.input}
               updateValue={onChangeStatus}
             />

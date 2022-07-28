@@ -29,6 +29,7 @@ import {
   useDeleteEmployeeMutation
 } from '@services/hooks/employee';
 import { EmployeeData, EmployeeReqType } from '@services/hooks/types';
+import { JOB_STATUS_VALUES } from '@constants/common';
 
 import { HomePageProps } from './types';
 
@@ -40,12 +41,6 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
   const { data, refetch: fetch } = useGetAllEmployeesQuery();
   const value = data?.employees;
 
-  enum jobStatusValues {
-    Active = 'active',
-    Inactive = 'inactive',
-    Probation = 'Probation'
-  }
-
   const navigateToPage = (idParam?: number) => {
     idParam
       ? navigateTo(ScreenNames.EmployeeDetails, { id: idParam })
@@ -54,11 +49,11 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
 
   useEffect(() => {
     fetch();
-    setEmployeeData(
+    const newValue =
       status !== 'status'
         ? value?.filter(employee => employee.jobStatus === status)
-        : value
-    );
+        : value;
+    setEmployeeData(newValue);
   }, [status, value]);
 
   const renderFunction = ({ item }: { item: EmployeeData; index: number }) => (
@@ -66,14 +61,8 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
       employeeName={item.name}
       status={item.jobStatus}
       onCardClick={() => navigateToPage(item.id)}
-      employeeId={data?.employees[0]?.id || 0}
+      employeeId={item.id || 0}
     />
-  );
-
-  useFocusEffect(
-    useCallback(() => {
-      fetch();
-    }, [])
   );
 
   return (
@@ -87,9 +76,9 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
             Icon={ListIcon}
             text={status ? status : 'status'}
             values={[
-              jobStatusValues.Probation,
-              jobStatusValues.Active,
-              jobStatusValues.Inactive
+              JOB_STATUS_VALUES.Probation,
+              JOB_STATUS_VALUES.Active,
+              JOB_STATUS_VALUES.Inactive
             ]}
             DropIcon={PolygonIcon}
             updateValue={onChangeStatus}

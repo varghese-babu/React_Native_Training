@@ -14,7 +14,8 @@ export const homeApi = api.injectEndpoints({
       query: () => ({
         url: '/employees',
         method: 'GET'
-      })
+      }),
+      providesTags: ['GET_EMPLOYEES']
     }),
     getEmployeeById: builder.query<
       IndividualEmployeeData,
@@ -31,7 +32,8 @@ export const homeApi = api.injectEndpoints({
         url: `/employees`,
         method: 'POST',
         body: body
-      })
+      }),
+      invalidatesTags: ['GET_EMPLOYEES']
     }),
 
     editEmployee: builder.mutation<ResponseType, EmployeeReqType>({
@@ -39,14 +41,16 @@ export const homeApi = api.injectEndpoints({
         url: `/employees/${body.id}`,
         method: 'PUT',
         body: body
-      })
+      }),
+      invalidatesTags: ['GET_EMPLOYEES']
     }),
 
     deleteEmployee: builder.mutation<any, GetEmpByIdPayloadType>({
       query: payload => ({
         url: `/employees/${payload.id}`,
         method: 'DELETE'
-      })
+      }),
+      invalidatesTags: ['GET_EMPLOYEES']
     })
   })
 });
